@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: buttons.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: buttons.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
+ * @file: buttons.js
+ * @author Alessandro, Alice, Mirco, Rania
+ * 
+ * This file contains all the button settings and events
+ */
+
+//If the object "mySpace" doesn't exist, create it
+if(!mySpace) {
+  var mySpace = {};
+}
+
+//Open Button
+mySpace.openButton = document.getElementById('btn-settings');
+
+//Save settings button
+mySpace.saveButton = document.getElementById('save');
+
+//Close settings button
+mySpace.closeButton = document.getElementById('close');
+
+//Next and previous week buttons 
+mySpace.previousButton = document.getElementById('previous');
+mySpace.nextButton = document.getElementById('next');
+
+//Hiding the previous button at the start of the program
+mySpace.previousButton.style.display = "none";
+
+/**
+* @description This function opens the form
+*/
+function openForm() {
+  document.getElementById("settings").style.display = "block";
+  document.querySelector('div.container').style.display = "none";
+  mySpace.nextButton.style.display = "none";
+  mySpace.previousButton.style.display = "none";
+  mySpace.closeButton.style.display = "none"
+}
+
+/**
+* @description This function closes the form
+*/
+function closeForm() {
+  document.getElementById("settings").style.display = "none";
+  document.getElementById("btn-settings").style.display = "none";
+
+  //insert spinner
+  var spinner = document.createElement('img');
+  spinner.src = "https://img.icons8.com/material-two-tone/100/000000/spinner-frame-5.png";
+  spinner.style.position = "absolute";
+  spinner.style.top = "300px";
+  spinner.style.left = "45%";
+  document.getElementById('nav').appendChild(spinner);
+  setTimeout(function() {
+    spinner.src = "https://img.icons8.com/ios-glyphs/100/000000/spinner-frame-5.png";
+  }, 600);
+ 
+  //Waiting 1,5 seconds before the table appears
+  setTimeout(function() {
+    spinner.style.display = "none";
+    document.querySelector('div.container').style.display = "block";
+    mySpace.nextButton.style.display = "block";
+    document.getElementById('btn-settings').style.display = "block";
+  }, 1500);
+}
+
+/**
+* @description This function generates the previous week table. If the current week is the first one
+* it will hide the previous button
+*/
+function printPreviousTable() {
+  mySpace.nextButton.style.display = "block";
+  mySpace.currentWeek -= 1;
+  
+  if(mySpace.currentWeek == 0) {
+    mySpace.previousButton.style.display = "none";
+  } 
+  generateWeekTable();
+}
+
+/**
+* @description This function generate the next week table. If the current week is the last generated one
+* it will hide the next button
+*/
+function printNextTable() {
+  mySpace.previousButton.style.display = "block";
+  mySpace.currentWeek += 1;
+
+  if(mySpace.currentWeek == mySpace.managerSettings.weeks - 1) {
+    mySpace.nextButton.style.display = "none";
+  } 
+
+  if (mySpace.currentWeek == mySpace.weeks.length) {
+    createWeek();
+  } else {
+    generateWeekTable();
+  }
+}
+
+//Calling addEventListener to the buttons
+mySpace.openButton.addEventListener('click', openForm);
+mySpace.saveButton.addEventListener('click', uploadSettings);
+mySpace.closeButton.addEventListener('click', closeForm);
+mySpace.previousButton.addEventListener('click', printPreviousTable);
+mySpace.nextButton.addEventListener("click", printNextTable);</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#addRow">addRow</a></li><li><a href="global.html#changeColor">changeColor</a></li><li><a href="global.html#checkExpiry">checkExpiry</a></li><li><a href="global.html#checkProductState">checkProductState</a></li><li><a href="global.html#closeForm">closeForm</a></li><li><a href="global.html#copyProduct">copyProduct</a></li><li><a href="global.html#createTd">createTd</a></li><li><a href="global.html#createWeek">createWeek</a></li><li><a href="global.html#deleteProduct">deleteProduct</a></li><li><a href="global.html#formatDate">formatDate</a></li><li><a href="global.html#generateNewProducts">generateNewProducts</a></li><li><a href="global.html#generateNewWeek">generateNewWeek</a></li><li><a href="global.html#generateWeekTable">generateWeekTable</a></li><li><a href="global.html#getArray">getArray</a></li><li><a href="global.html#getNextWeekDate">getNextWeekDate</a></li><li><a href="global.html#getTemplate">getTemplate</a></li><li><a href="global.html#isEmpty">isEmpty</a></li><li><a href="global.html#isValid">isValid</a></li><li><a href="global.html#newExpiry">newExpiry</a></li><li><a href="global.html#newId">newId</a></li><li><a href="global.html#newName">newName</a></li><li><a href="global.html#newProduct">newProduct</a></li><li><a href="global.html#openForm">openForm</a></li><li><a href="global.html#printNextTable">printNextTable</a></li><li><a href="global.html#printPreviousTable">printPreviousTable</a></li><li><a href="global.html#removeRows">removeRows</a></li><li><a href="global.html#startProgram">startProgram</a></li><li><a href="global.html#uploadProgram">uploadProgram</a></li><li><a href="global.html#uploadSettings">uploadSettings</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.4</a> on Mon Jun 15 2020 16:58:01 GMT+0200 (GMT+02:00)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

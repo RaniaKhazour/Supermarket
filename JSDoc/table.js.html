@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: table.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: table.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
+ * @file: table.js
+ * @author Alessandro, Alice, Mirco, Rania
+ * 
+ * This file contains all the tables settings and functions
+ */
+
+/**
+* @description This function generates a week table based on the "currentWeek" value
+*/
+function generateWeekTable() {
+    //Modify tables header
+    var headerDate = document.querySelectorAll("ul li");
+    headerDate[0].innerHTML = "Week " + (mySpace.currentWeek+1);
+    headerDate[1].innerHTML = formatDate(mySpace.weeks[mySpace.currentWeek].weekDate);
+
+    //Removing old rows
+    var tables = document.querySelectorAll("table tbody");
+    removeRows(tables);
+
+    for (var i=0; i &lt; mySpace.weeks[mySpace.currentWeek].products.length; i++) {
+      addRow(mySpace.weeks[mySpace.currentWeek].products[i], tables[0]);
+    }
+
+    for (var i=0; i &lt; mySpace.weeks[mySpace.currentWeek].filtered.length; i++) {
+      addRow(mySpace.weeks[mySpace.currentWeek].filtered[i], tables[1]);
+    }                                         
+}
+
+/**
+* @description This function adds a row to the table passed as parameter filling it with the product object properties
+* @param {object} product - product object
+* @param {HTMLElement} tBody - table element
+*/
+function addRow(product, tBody) {
+    var trBody = document.createElement("tr");
+    tBody.appendChild(trBody);
+
+    createTd(trBody, product.id);
+    createTd(trBody, product.name);
+    createTd(trBody, formatDate(product.expiry));
+    createTd(trBody, product.state);
+    createTd(trBody, product.check);
+}
+
+/**
+* @description This function adds a row to the table passed as parameter filling it with the product object properties
+* @param {HTMLElement} tRow - row element
+* @param {string} text - cell content
+*/
+function createTd(tRow, text) {
+    var newTd = document.createElement("td");
+    newTd.innerHTML = text;
+    tRow.appendChild(newTd);
+
+    changeColor(newTd, text);
+}
+
+/**
+* @description This function removes all the rows from the table array passed as parameter
+* @param {HTMLElement} tables - table elements
+*/
+function removeRows(tables) {
+  for (var i=0; i &lt; tables.length; i++) {
+    while(tables[i].hasChildNodes()) {
+      tables[i].removeChild(tables[i].firstChild);
+    }
+  }
+}
+
+/**
+* @description This function changes the color of the newTd by their text
+* @param {HTMLElement} newTd - cell element
+* @param {string} text - cell content
+*/
+function changeColor(newTd, text) {
+    if(text == "new") {
+        newTd.style.color = "#347235";
+    } else if(text == "expired") {
+        newTd.style.color = "#C11B17";
+    } else if(text == "old") {
+        newTd.style.color = "gray";
+    } else if(text == "valid") {
+        newTd.style.color = "#800080";
+    }
+}
+
+/**
+ * @description Function that formats the date(e.g. "20-JUN-2020")
+ * @param {date} d - date to format
+ * @returns {string} formatted date
+ */
+function formatDate(d) {
+    //format year
+    var year = d.getFullYear().toString();
+
+    //format month
+    var monthNames = ["JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"];
+    var month = monthNames[(d.getMonth())];//getMonth() starts from 0 (= January)
+
+    //format day
+    var day = d.getDate();
+    if(day &lt; 10) {
+    day = "0" + day.toString();
+    } else {
+    day = day.toString();
+    }
+
+    return day + "-" + month + "-" + year;
+}
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#addRow">addRow</a></li><li><a href="global.html#changeColor">changeColor</a></li><li><a href="global.html#checkExpiry">checkExpiry</a></li><li><a href="global.html#checkProductState">checkProductState</a></li><li><a href="global.html#closeForm">closeForm</a></li><li><a href="global.html#copyProduct">copyProduct</a></li><li><a href="global.html#createTd">createTd</a></li><li><a href="global.html#createWeek">createWeek</a></li><li><a href="global.html#deleteProduct">deleteProduct</a></li><li><a href="global.html#formatDate">formatDate</a></li><li><a href="global.html#generateNewProducts">generateNewProducts</a></li><li><a href="global.html#generateNewWeek">generateNewWeek</a></li><li><a href="global.html#generateWeekTable">generateWeekTable</a></li><li><a href="global.html#getArray">getArray</a></li><li><a href="global.html#getNextWeekDate">getNextWeekDate</a></li><li><a href="global.html#getTemplate">getTemplate</a></li><li><a href="global.html#isEmpty">isEmpty</a></li><li><a href="global.html#isValid">isValid</a></li><li><a href="global.html#newExpiry">newExpiry</a></li><li><a href="global.html#newId">newId</a></li><li><a href="global.html#newName">newName</a></li><li><a href="global.html#newProduct">newProduct</a></li><li><a href="global.html#openForm">openForm</a></li><li><a href="global.html#printNextTable">printNextTable</a></li><li><a href="global.html#printPreviousTable">printPreviousTable</a></li><li><a href="global.html#removeRows">removeRows</a></li><li><a href="global.html#startProgram">startProgram</a></li><li><a href="global.html#uploadProgram">uploadProgram</a></li><li><a href="global.html#uploadSettings">uploadSettings</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.4</a> on Mon Jun 15 2020 16:58:01 GMT+0200 (GMT+02:00)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

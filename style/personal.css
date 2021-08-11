@@ -1,0 +1,149 @@
+body{
+    background-image:url(../img/bio-food.jpg);
+    background-size: cover;
+    line-height: initial;
+    height: 100vh;
+}
+
+/*scroll bar*/
+::-webkit-scrollbar {
+    border-radius: 5px;
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+background: #CC6600; 
+}
+
+::-webkit-scrollbar-thumb {
+    background: #999933; 
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #003333; 
+}
+
+form{
+    background-color: beige;
+}
+
+.open-form{
+    display: none;
+}
+
+.color {
+    background-color: #fbfbdf;
+}
+
+.border-custom {
+    border: 1px solid green;
+}
+
+.rounder{
+    border-radius: 5px;
+}
+
+/**TABLE**/
+.container {
+    width: 70%;
+    min-height: 500px;
+    background-color: #fbfbdf;
+    margin-top:30px;
+    padding: 25px;
+}
+
+.title-container {
+    width: 100%;
+    background-color: #CC6600;
+}
+
+h3 {
+    margin-left: 5%;
+}
+
+table {
+    width: 100%;
+    border-radius: 25px;
+    margin-top: 10px;
+    text-align: center;
+    border-spacing: 0px;
+}
+
+thead, tbody {
+    width: 100%;
+    display: block;
+    border-radius: 10px;
+}
+
+tbody {
+    margin-top: 5px;
+    height: 150px;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+tbody td, thead th {
+    text-align: center;
+    width: 1%;
+}
+
+.table-custom th, .table-custom td{
+    padding: 5px
+}
+
+.table-custom th{
+    font-weight: 700;
+    background-color: #999933;
+    color: #fff
+}
+
+.table-custom tr:nth-child(even) {
+    background-color:rgba(245, 245, 220, 1);
+}
+
+.table-custom tr:nth-child(odd) {
+    background-color:rgb(216, 216, 135);
+}
+
+.table-custom tr:hover{
+    background-color:rgb(211, 174, 9);
+    color:white;
+}
+
+/* button next previous */
+.change {
+    text-decoration: none;
+    position: fixed;
+    margin-top: 5px;
+    padding: 8px 16px;
+    border-radius: 5%;
+  }
+  
+  .change:hover {
+    background-color: #003333;
+    color: #FFFFFF;
+  }
+  
+  .previous {
+    background-color: #999933;
+    color: white;
+    top:50%;
+    left: 0%;
+    
+  }
+  
+  .next {
+    background-color: #CC6600;
+    color: white;
+    top:50%;
+    right: 0%;
+  }
+
+  
+/* On screens that are 600px or less, set the background color to olive */
+@media screen and (max-width: 600px) {
+    .change {
+        padding: 5px 4px;
+      }
+  }
+  

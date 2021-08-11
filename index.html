@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel ="stylesheet" href="style/personal.css">
+    <title>Supermarket</title>
+    <!-- add icon -->
+    <link rel="icon" href="img/logo.png">
+  </head>
+
+  <body>
+    <nav id="nav" class="navbar navbar-expand-lg navbar-light color">
+      <a href="#!" class = "navbar-brand">
+          <img id="logo-nav" src="img/logo-light.png" style="width:70px; height:50px;" alt="logo">
+      </a>
+      <h5>Inventory</h5>
+      <!-- open form buttom -->
+      <button id="btn-settings" class="btn border-custom my-2 my-sm-0 ml-auto button-settings" type="button">Settings</button>
+    </nav>
+
+      <!-- Form Settings -->
+      <form id ="settings" action="#" class = "open-form p-4" name="settings">
+        <div class="row">
+          <!-- Weeks -->
+          <div class="col-sm-12 col-md-6">
+            <label for="weeks">Weeks</label>
+            <input id ="weeks" name="weeks" type="number" value="5" class="form-control" >
+          </div>
+          <!-- Weekly products -->
+          <div class="col-sm-12 col-md-6">
+            <label for="products"> Weekly products</label>
+            <input id="products" name="products" type="number" value="5" class="form-control">
+          </div>
+          <!-- Week duration -->
+          <div class="col-sm-12 col-md-6">
+            <label for ="duration">Week duration</label>
+            <input id="duration" name="duration" type="number" value="2" class="form-control" >
+          </div>
+          <!-- Check threshold-->
+          <div class="col-sm-12 col-md-6">
+            <label for="threshold">Check threshold </label>
+            <input  id="threshold" name="threshold" type="number" value="2" class="form-control">
+          </div>
+          <!-- Start Date-->
+          <div class="col-sm-12 col-md-6">
+            <label id="labelDate" for="start">Start date</label>
+            <input id="start"  name="start" type="date" value="2020-06-22" class="form-control">
+          </div>
+          <!-- Date offset-->
+          <div class="col-sm-12 col-md-6">
+            <label for="offset">Date offset </label>
+            <input  id="offset" name="offset" type="number" value="2" class="form-control">
+          </div>
+          <!-- Color template-->
+          <div class="col-sm-12 col-md-6">
+            <label for="template">Color Template</label>
+            <select  id="template" name='template' class="form-control">
+              <option value="light">Light</option>
+              <option value="dark">Dark</option>
+            </select>
+          </div>
+          <!-- Products name-->
+          <div class="col-sm-12 col-md-6">
+            <label id="labelName" for="names">Products name</label>
+            <input  id="names" type='text' name='names' 
+                    value="Banana, Dry Fruit, Apple, Tomato, Rice, Salad, Oil" 
+                    class="form-control">
+          </div>
+          <!-- Save & Close-->
+          <button type="button" id="save" class="btn btn-success ml-2 mt-2">Save Settings</button>
+          <button type="button" id="close" class="btn btn-danger cancel ml-2 mt-2">Close</button>
+        </div>
+      </form>
+
+      <!-- Table -->
+      <div class="container rounded">
+
+        <!-- Week and Date-->
+        <div class="title-container rounded">
+          <ul class="list-inline text-white p-1">
+            <li class="list-inline-item ml-4"></li>
+            <li class="list-inline-item float-right mr-4"></li>
+          </ul>
+        </div>
+        <!-- Week table-->
+        <table class="table-custom">
+          <thead>
+            <tr>
+              <th scope="col">Id</th>
+              <th scope="col">description</th>
+              <th scope="col">expiry date</th>
+              <th scope="col">status</th>
+              <th scope="col">check</th>
+            </tr>
+          </thead>
+          <tbody>
+          </tbody>
+        </table>
+
+        <!-- Filtered -->
+        <div class="title-container rounded">
+          <p class="mt-5 ml-4 text-white p-1">Filtered</p>
+        </div>
+        <table class="table-custom">
+            <thead>
+              <tr>
+                <th scope="col">Id</th>
+                <th scope="col">description</th>
+                <th scope="col">expiry date</th>
+                <th scope="col">status</th>
+                <th scope="col">check</th>
+              </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+      </div>
+
+      <!-- Next and Previous -->
+      <a href="#!" id="previous" class="change previous float-left ml-3 ">&laquo; Previous</a>
+      <a href="#!" id="next" class="change next float-right mr-3 ">Next &raquo;</a>
+      
+
+    <!-- end of the body -->
+    <script src="script/manager.js"></script>
+    <script src="script/product.js"></script>
+    <script src="script/table.js"></script>
+    <script src="script/database.js"></script>
+    <script src="script/buttons.js"></script>
+    <script src="script/main.js"></script>
+    
+  </body>
+</html>
